@@ -13,3 +13,5 @@ Extension ready to be added to chrome.
 
 You should now have Free Press installed!
 
+<a href="https://github.com/kartik34/free-press">Backend repo</a>   
+
