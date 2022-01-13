@@ -1,3 +1,5 @@
+Free Press is a chrome extension that finds you free alternatives to paywalled news articles
+
 # Getting Started with Free Press
 
 ### `npm run build`
