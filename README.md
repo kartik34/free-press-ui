@@ -2,6 +2,7 @@ Free Press is a chrome extension that finds you free alternatives to paywalled n
 
 # Getting Started with Free Press
 
+### `npm install`
 ### `npm run build`
 
 Builds the app for production to the `build` folder.
