@@ -3,8 +3,7 @@ import './Article.css';
 import 'bulma/css/bulma.min.css';
 import { Box, Heading, Tag } from 'react-bulma-components';
 
-function Article(props: any) {
-    const [post, setPost] = React.useState<[any]>();
+function Article(props: { article: any }) {
     const article = props.article;
     return (
         <Box id="article" key={article.rating} >
