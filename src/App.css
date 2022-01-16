@@ -14,13 +14,13 @@
   padding-left: 10px;
   padding-right: 5px;
 }
-#info{
+/* #info{
   margin-bottom: 8px;
-}
-#loading{
-  text-align: center;
-  margin-top: 50%;
 }
 #article{
   margin-bottom: 0.7rem;
+} */
+#loading{
+  text-align: center;
+  margin-top: 50%;
 }

@@ -1,15 +1,15 @@
 import React from 'react';
 import axios from "axios";
-import logo from './logo.svg';
 import './App.css';
 import 'bulma/css/bulma.min.css';
-import { Button, Block, Box, Navbar, Heading, Tag } from 'react-bulma-components';
+import { Heading } from 'react-bulma-components';
 import { DOMMessage, DOMMessageResponse } from './types';
-const baseURL = "http://localhost:3000/news/articles/";
+import Article from './Article';
+import NavBar from './Navbar';
+const baseURL = "https://free-press.azurewebsites.net/news/articles/";
 
 function App() {
   const [title, setTitle] = React.useState('');
-  const [url, setUrl] = React.useState('');
   const [post, setPost] = React.useState<[any]>();
 
   React.useEffect(() => {
@@ -27,7 +27,6 @@ function App() {
             var parser = document.createElement('a');
             parser.href = response.url;
             response.url = parser.hostname;
-            setUrl(response.url);
             axios.get(baseURL + encodeURIComponent(response.title) + "/20/" + encodeURIComponent(response.url)).then((response) => {
               setPost(response.data);
             });
@@ -54,32 +53,16 @@ function App() {
   }
   return (
     <div className="App">
-      <div>
-        <img
-          id="logo"
-          src="https://i.imgur.com/VwNdeME.png"
-          height="30"
-        />
-      </div>
-      {/* <p id="title">
-        Results for: {title}
-      </p> */}
-
+      <NavBar />
       {post.map(item => (
-        <Box id="article" key={item.rating} >
-          <p id="info"><Tag>{item.hostName}</Tag> <Tag>{Math.round(100 * item.rating)}% Similarity</Tag></p>
-          <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
-        </Box>
+        <Article article={item} />
       ))}
-
-
     </div>
   );
 }
 
 export default App;
 
-{/* <Button color="primary">Primary</Button> */ }
 
 
 
