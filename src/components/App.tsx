@@ -3,16 +3,16 @@ import axios from "axios";
 import './App.css';
 import 'bulma/css/bulma.min.css';
 import { Heading } from 'react-bulma-components';
-import { DOMMessage, DOMMessageResponse } from './types';
+import { DOMMessage, DOMMessageResponse } from '../types';
 import Article from './Article';
 import NavBar from './Navbar';
-const baseURL = "https://free-press.azurewebsites.net/news/articles/";
 
 function App() {
   const [title, setTitle] = React.useState('');
   const [post, setPost] = React.useState<[any]>();
+  const baseURL = "https://free-press.azurewebsites.net/news/articles/";
 
-  React.useEffect(() => {
+  const getArticles = () => {
     chrome.tabs && chrome.tabs.query({
       active: true,
       currentWindow: true
@@ -23,22 +23,22 @@ function App() {
         (response: DOMMessageResponse) => {
           if (response.title != null) {
             setTitle(response.title);
-            console.log(response.url)
-            var parser = document.createElement('a');
-            parser.href = response.url;
-            response.url = parser.hostname;
+            const formatURL = new URL(response.url);
+            response.url = formatURL.hostname;
             axios.get(baseURL + encodeURIComponent(response.title) + "/20/" + encodeURIComponent(response.url)).then((response) => {
               setPost(response.data);
             });
           }
         });
     });
-
+  }
+  React.useEffect(() => {
+    getArticles();
   }, []);
   if (!title) {
     return (
       <Heading id="loading">We can't find an article title!</Heading>
-      //UI that allows user to paste in their own title
+      //allow user to enter title if cant detect from DOM
     );
   }
   if (!post) {
@@ -62,52 +62,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */
