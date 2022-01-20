@@ -2,6 +2,9 @@ Free Press is a chrome extension that finds you free alternatives to paywalled n
 
 Chrome store: https://chrome.google.com/webstore/detail/free-press/gipjabjfhbebipappkammimlbpnnnmfn/
 
+<img src="https://i.imgur.com/9Vm93TF.jpg" width="300px">
+
+
 
 # Running locally
 
