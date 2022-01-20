@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/kvIIeg3.png" width="200px">
+<img src="https://i.imgur.com/fnTWltk.png" width="350px">
 
 Free Press is a chrome extension that finds you free alternatives to paywalled news articles
 
